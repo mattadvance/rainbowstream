@@ -150,8 +150,7 @@ def init_config():
     Init configuration
     """
     # Load the initial config
-    config = os.path.dirname(__file__) + \
-        '/colorset/config'
+    config = os.path.dirname(__file__) + '/colorset/config'
     try:
         data = load_config(config)
         for d in data:
@@ -167,8 +166,9 @@ def init_config():
     except (IOError, ValueError) as e:
         c['USER_JSON_ERROR'] = str(e)
     # Load default theme
-    theme_file = os.path.dirname(__file__) + \
-        '/colorset/' + c['THEME'] + '.json'
+
+
+    theme_file = os.path.expanduser("~") + '/.config/rainbowstream/colorset/' + c['THEME'] + '.json'
     try:
         data = load_config(theme_file)
         for d in data:

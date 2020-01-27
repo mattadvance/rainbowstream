@@ -252,8 +252,13 @@ def init(args):
     g['decorated_name'] = lambda x: color_func(
         c['DECORATED_NAME'])('[' + x + ']: ', rl=True)
     # Theme init
-    files = os.listdir(os.path.dirname(__file__) + '/colorset')
-    themes = [f.split('.')[0] for f in files if f.split('.')[-1] == 'json']
+    try:
+        files = os.listdir(os.path.expanduser("~") + '/.config/rainbowstream/colorset')
+        themes = [f.split('.')[0] for f in files if f.split('.')[-1] == 'json']
+    except Exception as e:
+        files = os.listdir(os.path.dirname(__file__) + '/colorset')
+        themes = [f.split('.')[0] for f in files if f.split('.')[-1] == 'json']
+
     g['themes'] = themes
     g['pause'] = False
     g['message_threads'] = {}

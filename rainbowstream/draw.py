@@ -125,8 +125,7 @@ def reload_theme(value, prev):
     Check current theme and update if necessary
     """
     if value != prev:
-        config = os.path.dirname(
-            __file__) + '/colorset/' + value + '.json'
+        config = os.path.expanduser("~") + '/.config/rainbowstream/colorset/' + value + '.json'
         # Load new config
         data = load_config(config)
         if data:
